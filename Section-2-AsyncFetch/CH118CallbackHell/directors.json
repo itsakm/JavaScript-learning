@@ -1,0 +1,18 @@
+[
+    {
+        "name":"Brian de palma",
+        "age": "78"
+    },
+    {
+        "name":"Francis ford coppola",
+        "age": "82"
+    },
+    {
+        "name":"Martin scorsese",
+        "age": "76"
+    },
+    {
+        "name":"Robert de niro",
+        "age": "76"
+    }
+]

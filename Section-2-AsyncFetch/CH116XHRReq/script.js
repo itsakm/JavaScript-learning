@@ -17,10 +17,11 @@ xhr.onreadystatechange = function()
     {
 
         const data = JSON.parse(this.responseText);
+        console.log(data)
 
         data.forEach((repo) => {
             const li = document.createElement('li');
-            li.innerHTML = `<strong>${repo.name}</strong> - ${repo.name}`;
+            li.innerHTML = `<strong>${repo.name}</strong> - ${repo.description}`;
             document.querySelector('#results').appendChild(li);
         });
     }
