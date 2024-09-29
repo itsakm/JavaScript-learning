@@ -86,6 +86,10 @@ router.put('/:id',async (req,res) => {
 
     try
     {
+        const idea = await Idea.findById(req.params.id);
+
+        if(idea.username === req.body.username)
+        {   
         const updatedIdea = await Idea.findByIdAndUpdate(
             req.params.id,
             {
@@ -96,7 +100,10 @@ router.put('/:id',async (req,res) => {
             },
             {new : true}
         );
-        res.json({success:true,data:updatedIdea})
+        return res.json({success:true,data:updatedIdea})
+        }
+        return res.status(403)
+        .json({success:false,error:'You are not authorized!!'})
     }
     catch(err)
     {
@@ -112,8 +119,15 @@ router.delete('/:id',async (req,res) => {
 
     try
     {
+        const idea = await Idea.findById(req.params.id);
+
+        if(idea.username === req.body.username){
         await Idea.findByIdAndDelete(req.params.id);
-        res.json({success:true,data:{} })
+        return res.json({success:true,data:{} })
+        }
+
+        return res.status(403)
+        .json({success:false,error:'You are not authorized!!'})
     }
     catch(err)
     {
